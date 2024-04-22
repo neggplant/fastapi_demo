@@ -55,7 +55,7 @@
         "mojo": "mojo run"
     },
     "rainbow_csv.enable_sticky_header": true,
-    "python.envFile": "/data/venv/fastapi_demo",
+    "python.envFile": "${workspaceFolder}/.env",
     "python.analysis.typeCheckingMode": "basic",
     "python.defaultInterpreterPath": "/data/venv/fastapi_demo/bin/python",
     "python.terminal.activateEnvironment": true,
@@ -66,5 +66,5 @@
     "editor.formatOnSave": true,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
-      }
+    }
 }

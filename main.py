@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from router import base_router, websocket_router
+from settings import Settings
 
 logger = logging.getLogger(__name__)
 # logging.basicConfig(filename='example.log', encoding='utf-8', level=logging.DEBUG,
@@ -14,18 +15,18 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s - %(filename)s - line %(lineno)d - %(message)s",
 )
 
-logger.debug("----------Starting------------")
+logger.debug("-------Server-Starting------------")
 
 
 @asynccontextmanager
 async def lifespan(
     app: FastAPI,
 ):
-    # Load the ML model
+    # 程序启动时执行
     logger.debug("----------lifespan started----------")
     yield
 
-    # Clean up the ML models and release the resources
+    # 程序结束前执行
     logger.debug("----------lifespan end----------")
 
 
@@ -36,4 +37,4 @@ app.include_router(websocket_router, prefix="/ws")
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=7777)
+    uvicorn.run(app, host="0.0.0.0", port=Settings.PORT)
